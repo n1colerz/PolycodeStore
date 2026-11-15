@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "descripcion": "Casos de prueba comunes e idénticos para Python, Go y JS/TS. Los importes se comparan tras redondeo monetario half-up a 2 decimales.",
+  "moneda": "unidades monetarias (u.m.)",
+  "casos": [
+    {
+      "id": "C1",
+      "tipo": "calculo",
+      "descripcion": "Pedido válido estándar: cliente regular, subtotal 620.00 (< 500? no: envío gratis), sin descuento.",
+      "entrada": {
+        "id": "PED-C1",
+        "clienteId": "CLI-002",
+        "fechaCreacion": "2026-11-10T10:00:00Z",
+        "estado": "recibido",
+        "tipoEnvio": "estandar",
+        "metodoPago": "tarjeta",
+        "prioridad": "media",
+        "items": [
+          {
+            "codigoProducto": "PROD-001",
+            "nombre": "Teclado mecánico",
+            "precioUnitario": 250.0,
+            "cantidad": 2
+          },
+          {
+            "codigoProducto": "PROD-004",
+            "nombre": "Mouse inalámbrico",
+            "precioUnitario": 120.0,
+            "cantidad": 1
+          }
+        ]
+      },
+      "esperado": {
+        "http": 201,
+        "ok": true,
+        "calculos": {
+          "subtotal": 620.0,
+          "porcentajeDescuento": 0,
+          "descuento": 0.0,
+          "impuesto": 99.2,
+          "costoEnvio": 0.0,
+          "total": 719.2
+        }
+      }
+    },
+    {
+      "id": "C2",
+      "tipo": "calculo",
+      "descripcion": "Cantidad <= 0: el item con cantidad 0 debe rechazarse con CANTIDAD_INVALIDA.",
+      "entrada": {
+        "id": "PED-C2",
+        "clienteId": "CLI-002",
+        "fechaCreacion": "2026-11-10T10:05:00Z",
+        "estado": "recibido",
+        "tipoEnvio": "retiro",
+        "metodoPago": "efectivo",
+        "prioridad": "baja",
+        "items": [
+          {
+            "codigoProducto": "PROD-010",
+            "nombre": "Lámpara LED",
+            "precioUnitario": 60.0,
+            "cantidad": 0
+          }
+        ]
+      },
+      "esperado": {
+        "http": 400,
+        "ok": false,
+        "error": {
+          "codigo": "CANTIDAD_INVALIDA",
+          "mensaje": "La cantidad debe ser un entero mayor que 0.",
+          "campo": "items[0].cantidad"
+        }
+      }
+    },
+    {
+      "id": "C3",
+      "tipo": "calculo",
+      "descripcion": "Pedido sin items: debe rechazarse con PEDIDO_SIN_ITEMS.",
+      "entrada": {
+        "id": "PED-C3",
+        "clienteId": "CLI-005",
+        "fechaCreacion": "2026-11-10T10:10:00Z",
+        "estado": "recibido",
+        "tipoEnvio": "express",
+        "metodoPago": "transferencia",
+        "prioridad": "alta",
+        "items": []
+      },
+      "esperado": {
+        "http": 400,
+        "ok": false,
+        "error": {
+          "codigo": "PEDIDO_SIN_ITEMS",
+          "mensaje": "El pedido debe tener al menos un item.",
+          "campo": "items"
+        }
+      }
+    },
+    {
+      "id": "C4",
+      "tipo": "calculo",
+      "descripcion": "Cliente VIP con subtotal >= 1000: 10% VIP + 5% por monto = 15% (el tope de 20% se respeta, pero no se alcanza con las reglas actuales).",
+      "entrada": {
+        "id": "PED-C4",
+        "clienteId": "CLI-001",
+        "fechaCreacion": "2026-11-10T11:00:00Z",
+        "estado": "recibido",
+        "tipoEnvio": "express",
+        "metodoPago": "tarjeta",
+        "prioridad": "alta",
+        "items": [
+          {
+            "codigoProducto": "PROD-002",
+            "nombre": "Monitor 27\"",
+            "precioUnitario": 600.0,
+            "cantidad": 2
+          }
+        ]
+      },
+      "esperado": {
+        "http": 201,
+        "ok": true,
+        "calculos": {
+          "subtotal": 1200.0,
+          "porcentajeDescuento": 15,
+          "descuento": 180.0,
+          "impuesto": 163.2,
+          "costoEnvio": 150.0,
+          "total": 1333.2
+        }
+      }
+    },
+    {
+      "id": "C5",
+      "tipo": "transicion",
+      "descripcion": "Transición inválida: entregado -> en_preparacion debe rechazarse.",
+      "entrada": {
+        "estadoActual": "entregado",
+        "estadoNuevo": "en_preparacion"
+      },
+      "esperado": {
+        "http": 409,
+        "ok": false,
+        "error": {
+          "codigo": "TRANSICION_INVALIDA",
+          "mensaje": "Transición de estado no permitida: 'entregado' → 'en_preparacion'.",
+          "campo": "estado"
+        }
+      }
+    }
+  ]
+}

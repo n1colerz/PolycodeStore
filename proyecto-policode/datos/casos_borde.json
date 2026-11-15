@@ -1,0 +1,317 @@
+{
+  "version": 1,
+  "descripcion": "Casos borde compartidos por las tres implementaciones. Complementan a casos_prueba.json.",
+  "casos": [
+    {
+      "id": "B01",
+      "tipo": "calculo",
+      "descripcion": "Retiro: costo de envío 0 aunque el subtotal sea menor que 500.",
+      "entrada": {
+        "id": "PED-B01",
+        "clienteId": "CLI-004",
+        "fechaCreacion": "2026-11-11T09:00:00Z",
+        "estado": "recibido",
+        "tipoEnvio": "retiro",
+        "metodoPago": "efectivo",
+        "prioridad": "media",
+        "items": [
+          {
+            "codigoProducto": "PROD-004",
+            "nombre": "Mouse inalámbrico",
+            "precioUnitario": 120.0,
+            "cantidad": 4
+          }
+        ]
+      },
+      "esperado": {
+        "http": 201,
+        "ok": true,
+        "calculos": {
+          "subtotal": 480.0,
+          "porcentajeDescuento": 0,
+          "descuento": 0.0,
+          "impuesto": 76.8,
+          "costoEnvio": 0.0,
+          "total": 556.8
+        }
+      }
+    },
+    {
+      "id": "B02",
+      "tipo": "calculo",
+      "descripcion": "Estándar con subtotal 499.99: envío 50 y redondeo half-up del IVA 79.9984 -> 80.00.",
+      "entrada": {
+        "id": "PED-B02",
+        "clienteId": "CLI-002",
+        "fechaCreacion": "2026-11-11T09:10:00Z",
+        "estado": "recibido",
+        "tipoEnvio": "estandar",
+        "metodoPago": "tarjeta",
+        "prioridad": "media",
+        "items": [
+          {
+            "codigoProducto": "PROD-TEST-01",
+            "nombre": "Producto de prueba 499.99",
+            "precioUnitario": 499.99,
+            "cantidad": 1
+          }
+        ]
+      },
+      "esperado": {
+        "http": 201,
+        "ok": true,
+        "calculos": {
+          "subtotal": 499.99,
+          "porcentajeDescuento": 0,
+          "descuento": 0.0,
+          "impuesto": 80.0,
+          "costoEnvio": 50.0,
+          "total": 629.99
+        }
+      }
+    },
+    {
+      "id": "B03",
+      "tipo": "calculo",
+      "descripcion": "VIP con subtotal 999.99 (no aplica +5%): descuento 99.999 -> 100.00 e IVA 143.9984 -> 144.00.",
+      "entrada": {
+        "id": "PED-B03",
+        "clienteId": "CLI-001",
+        "fechaCreacion": "2026-11-11T09:20:00Z",
+        "estado": "recibido",
+        "tipoEnvio": "express",
+        "metodoPago": "transferencia",
+        "prioridad": "alta",
+        "items": [
+          {
+            "codigoProducto": "PROD-TEST-02",
+            "nombre": "Producto de prueba 999.99",
+            "precioUnitario": 999.99,
+            "cantidad": 1
+          }
+        ]
+      },
+      "esperado": {
+        "http": 201,
+        "ok": true,
+        "calculos": {
+          "subtotal": 999.99,
+          "porcentajeDescuento": 10,
+          "descuento": 100.0,
+          "impuesto": 144.0,
+          "costoEnvio": 150.0,
+          "total": 1193.99
+        }
+      }
+    },
+    {
+      "id": "B04",
+      "tipo": "calculo",
+      "descripcion": "Cantidad no entera (1.5): debe rechazarse.",
+      "entrada": {
+        "id": "PED-B04",
+        "clienteId": "CLI-002",
+        "fechaCreacion": "2026-11-11T09:30:00Z",
+        "estado": "recibido",
+        "tipoEnvio": "retiro",
+        "metodoPago": "efectivo",
+        "prioridad": "baja",
+        "items": [
+          {
+            "codigoProducto": "PROD-004",
+            "nombre": "Mouse inalámbrico",
+            "precioUnitario": 120.0,
+            "cantidad": 1.5
+          }
+        ]
+      },
+      "esperado": {
+        "http": 400,
+        "ok": false,
+        "error": {
+          "codigo": "CANTIDAD_INVALIDA",
+          "mensaje": "La cantidad debe ser un entero mayor que 0.",
+          "campo": "items[0].cantidad"
+        }
+      }
+    },
+    {
+      "id": "B05",
+      "tipo": "calculo",
+      "descripcion": "Cliente inexistente en el catálogo.",
+      "entrada": {
+        "id": "PED-B05",
+        "clienteId": "CLI-999",
+        "fechaCreacion": "2026-11-11T09:40:00Z",
+        "estado": "recibido",
+        "tipoEnvio": "retiro",
+        "metodoPago": "efectivo",
+        "prioridad": "media",
+        "items": [
+          {
+            "codigoProducto": "PROD-004",
+            "nombre": "Mouse inalámbrico",
+            "precioUnitario": 120.0,
+            "cantidad": 1
+          }
+        ]
+      },
+      "esperado": {
+        "http": 404,
+        "ok": false,
+        "error": {
+          "codigo": "CLIENTE_NO_ENCONTRADO",
+          "mensaje": "El cliente 'CLI-999' no existe en el catálogo.",
+          "campo": "clienteId"
+        }
+      }
+    },
+    {
+      "id": "B06",
+      "tipo": "calculo",
+      "descripcion": "tipoEnvio fuera del enum.",
+      "entrada": {
+        "id": "PED-B06",
+        "clienteId": "CLI-002",
+        "fechaCreacion": "2026-11-11T09:50:00Z",
+        "estado": "recibido",
+        "tipoEnvio": "drone",
+        "metodoPago": "efectivo",
+        "prioridad": "media",
+        "items": [
+          {
+            "codigoProducto": "PROD-004",
+            "nombre": "Mouse inalámbrico",
+            "precioUnitario": 120.0,
+            "cantidad": 1
+          }
+        ]
+      },
+      "esperado": {
+        "http": 400,
+        "ok": false,
+        "error": {
+          "codigo": "TIPO_ENVIO_INVALIDO",
+          "mensaje": "El tipoEnvio debe ser uno de: estandar, express, retiro.",
+          "campo": "tipoEnvio"
+        }
+      }
+    },
+    {
+      "id": "B07",
+      "tipo": "transicion",
+      "descripcion": "Transición válida recibido -> en_preparacion.",
+      "entrada": {
+        "estadoActual": "recibido",
+        "estadoNuevo": "en_preparacion"
+      },
+      "esperado": {
+        "http": 200,
+        "ok": true,
+        "estado": "en_preparacion"
+      }
+    },
+    {
+      "id": "B08",
+      "tipo": "calculo",
+      "descripcion": "Cliente regular con subtotal exactamente 1000: +5% por monto.",
+      "entrada": {
+        "id": "PED-B08",
+        "clienteId": "CLI-002",
+        "fechaCreacion": "2026-11-11T10:00:00Z",
+        "estado": "recibido",
+        "tipoEnvio": "estandar",
+        "metodoPago": "tarjeta",
+        "prioridad": "media",
+        "items": [
+          {
+            "codigoProducto": "PROD-001",
+            "nombre": "Teclado mecánico",
+            "precioUnitario": 250.0,
+            "cantidad": 4
+          }
+        ]
+      },
+      "esperado": {
+        "http": 201,
+        "ok": true,
+        "calculos": {
+          "subtotal": 1000.0,
+          "porcentajeDescuento": 5,
+          "descuento": 50.0,
+          "impuesto": 152.0,
+          "costoEnvio": 0.0,
+          "total": 1102.0
+        }
+      }
+    },
+    {
+      "id": "B09",
+      "tipo": "calculo",
+      "descripcion": "Cliente VIP con subtotal exactamente 1000: 10% + 5% = 15%.",
+      "entrada": {
+        "id": "PED-B09",
+        "clienteId": "CLI-001",
+        "fechaCreacion": "2026-11-11T10:10:00Z",
+        "estado": "recibido",
+        "tipoEnvio": "estandar",
+        "metodoPago": "tarjeta",
+        "prioridad": "media",
+        "items": [
+          {
+            "codigoProducto": "PROD-001",
+            "nombre": "Teclado mecánico",
+            "precioUnitario": 250.0,
+            "cantidad": 4
+          }
+        ]
+      },
+      "esperado": {
+        "http": 201,
+        "ok": true,
+        "calculos": {
+          "subtotal": 1000.0,
+          "porcentajeDescuento": 15,
+          "descuento": 150.0,
+          "impuesto": 136.0,
+          "costoEnvio": 0.0,
+          "total": 986.0
+        }
+      }
+    },
+    {
+      "id": "B10",
+      "tipo": "calculo",
+      "descripcion": "Precio unitario 0 (permitido por el contrato propuesto): total 0.",
+      "entrada": {
+        "id": "PED-B10",
+        "clienteId": "CLI-002",
+        "fechaCreacion": "2026-11-11T10:20:00Z",
+        "estado": "recibido",
+        "tipoEnvio": "retiro",
+        "metodoPago": "efectivo",
+        "prioridad": "baja",
+        "items": [
+          {
+            "codigoProducto": "PROD-TEST-03",
+            "nombre": "Muestra gratuita",
+            "precioUnitario": 0.0,
+            "cantidad": 5
+          }
+        ]
+      },
+      "esperado": {
+        "http": 201,
+        "ok": true,
+        "calculos": {
+          "subtotal": 0.0,
+          "porcentajeDescuento": 0,
+          "descuento": 0.0,
+          "impuesto": 0.0,
+          "costoEnvio": 0.0,
+          "total": 0.0
+        }
+      }
+    }
+  ]
+}
