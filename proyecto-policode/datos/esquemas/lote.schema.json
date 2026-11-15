@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://polycode.local/esquemas/lote.schema.json",
+  "title": "LotePedidos",
+  "$defs": {
+    "solicitud": {
+      "type": "object",
+      "required": ["pedidos"],
+      "properties": {
+        "pedidos": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "pedido.schema.json" }
+        }
+      }
+    },
+    "resultado": {
+      "type": "object",
+      "required": ["indice", "ok"],
+      "properties": {
+        "indice": { "type": "integer", "minimum": 0 },
+        "ok": { "type": "boolean" }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "ok": { "const": true },
+            "pedido": { "$ref": "pedido_procesado.schema.json" }
+          },
+          "required": ["pedido"]
+        },
+        {
+          "properties": {
+            "ok": { "const": false },
+            "error": { "$ref": "error.schema.json" }
+          },
+          "required": ["error"]
+        }
+      ]
+    },
+    "resumen": {
+      "type": "object",
+      "required": ["total", "exitosos", "fallidos", "montoTotal"],
+      "additionalProperties": false,
+      "properties": {
+        "total": { "type": "integer", "minimum": 1 },
+        "exitosos": { "type": "integer", "minimum": 0 },
+        "fallidos": { "type": "integer", "minimum": 0 },
+        "montoTotal": { "type": "number", "minimum": 0 }
+      }
+    }
+  },
+  "oneOf": [
+    { "$ref": "#/$defs/solicitud" },
+    {
+      "type": "object",
+      "required": ["resultados", "resumen"],
+      "properties": {
+        "resultados": { "type": "array", "items": { "$ref": "#/$defs/resultado" } },
+        "resumen": { "$ref": "#/$defs/resumen" }
+      }
+    }
+  ]
+}

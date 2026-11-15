@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://polycode.local/esquemas/error.schema.json",
+  "title": "ErrorAPI",
+  "type": "object",
+  "required": ["codigo", "mensaje"],
+  "additionalProperties": false,
+  "properties": {
+    "codigo": { "type": "string", "minLength": 1 },
+    "mensaje": { "type": "string", "minLength": 1 },
+    "campo": { "type": "string", "minLength": 1 }
+  }
+}

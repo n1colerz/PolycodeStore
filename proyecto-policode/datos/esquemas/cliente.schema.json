@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://polycode.local/esquemas/cliente.schema.json",
+  "title": "Cliente",
+  "type": "object",
+  "required": ["id", "nombre", "email", "tipo"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^CLI-[0-9]{3}$" },
+    "nombre": { "type": "string", "minLength": 1 },
+    "email": { "type": "string", "format": "email" },
+    "tipo": { "type": "string", "enum": ["vip", "regular"] }
+  }
+}
