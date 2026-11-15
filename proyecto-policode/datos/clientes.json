@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "clientes": [
+    {
+      "id": "CLI-001",
+      "nombre": "Ana Torres",
+      "email": "ana.torres@example.com",
+      "tipo": "vip"
+    },
+    {
+      "id": "CLI-002",
+      "nombre": "Bruno Díaz",
+      "email": "bruno.diaz@example.com",
+      "tipo": "regular"
+    },
+    {
+      "id": "CLI-003",
+      "nombre": "Carla Méndez",
+      "email": "carla.mendez@example.com",
+      "tipo": "vip"
+    },
+    {
+      "id": "CLI-004",
+      "nombre": "Diego Ramírez",
+      "email": "diego.ramirez@example.com",
+      "tipo": "regular"
+    },
+    {
+      "id": "CLI-005",
+      "nombre": "Elena Ruiz",
+      "email": "elena.ruiz@example.com",
+      "tipo": "regular"
+    },
+    {
+      "id": "CLI-006",
+      "nombre": "Fabián Soto",
+      "email": "fabian.soto@example.com",
+      "tipo": "vip"
+    },
+    {
+      "id": "CLI-007",
+      "nombre": "Gabriela Vargas",
+      "email": "gabriela.vargas@example.com",
+      "tipo": "regular"
+    },
+    {
+      "id": "CLI-008",
+      "nombre": "Hugo Navarro",
+      "email": "hugo.navarro@example.com",
+      "tipo": "regular"
+    },
+    {
+      "id": "CLI-009",
+      "nombre": "Inés Campos",
+      "email": "ines.campos@example.com",
+      "tipo": "vip"
+    },
+    {
+      "id": "CLI-010",
+      "nombre": "Julián Peña",
+      "email": "julian.pena@example.com",
+      "tipo": "regular"
+    }
+  ]
+}

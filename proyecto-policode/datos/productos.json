@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "productos": [
+    {
+      "codigo": "PROD-001",
+      "nombre": "Teclado mecánico",
+      "precioUnitario": 250.0,
+      "categoria": "periféricos"
+    },
+    {
+      "codigo": "PROD-002",
+      "nombre": "Monitor 27\"",
+      "precioUnitario": 600.0,
+      "categoria": "monitores"
+    },
+    {
+      "codigo": "PROD-003",
+      "nombre": "Laptop 14\"",
+      "precioUnitario": 1200.0,
+      "categoria": "computación"
+    },
+    {
+      "codigo": "PROD-004",
+      "nombre": "Mouse inalámbrico",
+      "precioUnitario": 120.0,
+      "categoria": "periféricos"
+    },
+    {
+      "codigo": "PROD-005",
+      "nombre": "Auriculares Bluetooth",
+      "precioUnitario": 180.0,
+      "categoria": "audio"
+    },
+    {
+      "codigo": "PROD-006",
+      "nombre": "Webcam Full HD",
+      "precioUnitario": 220.0,
+      "categoria": "periféricos"
+    },
+    {
+      "codigo": "PROD-007",
+      "nombre": "Hub USB-C",
+      "precioUnitario": 90.0,
+      "categoria": "accesorios"
+    },
+    {
+      "codigo": "PROD-008",
+      "nombre": "Silla ergonómica",
+      "precioUnitario": 450.0,
+      "categoria": "mobiliario"
+    },
+    {
+      "codigo": "PROD-009",
+      "nombre": "Escritorio ajustable",
+      "precioUnitario": 700.0,
+      "categoria": "mobiliario"
+    },
+    {
+      "codigo": "PROD-010",
+      "nombre": "Lámpara LED",
+      "precioUnitario": 60.0,
+      "categoria": "accesorios"
+    },
+    {
+      "codigo": "PROD-011",
+      "nombre": "Mochila para laptop",
+      "precioUnitario": 150.0,
+      "categoria": "accesorios"
+    },
+    {
+      "codigo": "PROD-012",
+      "nombre": "Disco SSD 1TB",
+      "precioUnitario": 320.0,
+      "categoria": "almacenamiento"
+    }
+  ]
+}
