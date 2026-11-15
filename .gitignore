@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Go
+bin/
+*.exe
+*.test
+*.out
+coverage.out
+
+# Node
+node_modules/
+dist/
+coverage/
+*.log
+
+# Entornos y editores
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Artefactos locales
+salidas/
+*.tmp
