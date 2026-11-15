@@ -1,0 +1,229 @@
+{
+  "version": 1,
+  "pedidos": [
+    {
+      "id": "PED-0001",
+      "clienteId": "CLI-001",
+      "fechaCreacion": "2026-11-01T09:15:00Z",
+      "estado": "recibido",
+      "tipoEnvio": "express",
+      "metodoPago": "tarjeta",
+      "prioridad": "alta",
+      "items": [
+        {
+          "codigoProducto": "PROD-001",
+          "nombre": "Teclado mecánico",
+          "precioUnitario": 250.0,
+          "cantidad": 2
+        },
+        {
+          "codigoProducto": "PROD-012",
+          "nombre": "Disco SSD 1TB",
+          "precioUnitario": 320.0,
+          "cantidad": 1
+        }
+      ]
+    },
+    {
+      "id": "PED-0002",
+      "clienteId": "CLI-002",
+      "fechaCreacion": "2026-11-02T10:30:00Z",
+      "estado": "en_preparacion",
+      "tipoEnvio": "estandar",
+      "metodoPago": "efectivo",
+      "prioridad": "media",
+      "items": [
+        {
+          "codigoProducto": "PROD-004",
+          "nombre": "Mouse inalámbrico",
+          "precioUnitario": 120.0,
+          "cantidad": 3
+        },
+        {
+          "codigoProducto": "PROD-010",
+          "nombre": "Lámpara LED",
+          "precioUnitario": 60.0,
+          "cantidad": 2
+        }
+      ]
+    },
+    {
+      "id": "PED-0003",
+      "clienteId": "CLI-003",
+      "fechaCreacion": "2026-11-03T11:45:00Z",
+      "estado": "enviado",
+      "tipoEnvio": "retiro",
+      "metodoPago": "transferencia",
+      "prioridad": "baja",
+      "items": [
+        {
+          "codigoProducto": "PROD-005",
+          "nombre": "Auriculares Bluetooth",
+          "precioUnitario": 180.0,
+          "cantidad": 1
+        },
+        {
+          "codigoProducto": "PROD-007",
+          "nombre": "Hub USB-C",
+          "precioUnitario": 90.0,
+          "cantidad": 2
+        }
+      ]
+    },
+    {
+      "id": "PED-0004",
+      "clienteId": "CLI-004",
+      "fechaCreacion": "2026-11-04T12:00:00Z",
+      "estado": "entregado",
+      "tipoEnvio": "estandar",
+      "metodoPago": "tarjeta",
+      "prioridad": "alta",
+      "items": [
+        {
+          "codigoProducto": "PROD-003",
+          "nombre": "Laptop 14\"",
+          "precioUnitario": 1200.0,
+          "cantidad": 1
+        }
+      ]
+    },
+    {
+      "id": "PED-0005",
+      "clienteId": "CLI-005",
+      "fechaCreacion": "2026-11-05T13:20:00Z",
+      "estado": "cancelado",
+      "tipoEnvio": "express",
+      "metodoPago": "efectivo",
+      "prioridad": "media",
+      "items": [
+        {
+          "codigoProducto": "PROD-008",
+          "nombre": "Silla ergonómica",
+          "precioUnitario": 450.0,
+          "cantidad": 1
+        },
+        {
+          "codigoProducto": "PROD-011",
+          "nombre": "Mochila para laptop",
+          "precioUnitario": 150.0,
+          "cantidad": 2
+        }
+      ]
+    },
+    {
+      "id": "PED-0006",
+      "clienteId": "CLI-006",
+      "fechaCreacion": "2026-11-06T14:10:00Z",
+      "estado": "recibido",
+      "tipoEnvio": "estandar",
+      "metodoPago": "transferencia",
+      "prioridad": "baja",
+      "items": [
+        {
+          "codigoProducto": "PROD-006",
+          "nombre": "Webcam Full HD",
+          "precioUnitario": 220.0,
+          "cantidad": 1
+        },
+        {
+          "codigoProducto": "PROD-010",
+          "nombre": "Lámpara LED",
+          "precioUnitario": 60.0,
+          "cantidad": 1
+        }
+      ]
+    },
+    {
+      "id": "PED-0007",
+      "clienteId": "CLI-007",
+      "fechaCreacion": "2026-11-07T15:05:00Z",
+      "estado": "en_preparacion",
+      "tipoEnvio": "retiro",
+      "metodoPago": "tarjeta",
+      "prioridad": "alta",
+      "items": [
+        {
+          "codigoProducto": "PROD-009",
+          "nombre": "Escritorio ajustable",
+          "precioUnitario": 700.0,
+          "cantidad": 1
+        },
+        {
+          "codigoProducto": "PROD-011",
+          "nombre": "Mochila para laptop",
+          "precioUnitario": 150.0,
+          "cantidad": 1
+        }
+      ]
+    },
+    {
+      "id": "PED-0008",
+      "clienteId": "CLI-008",
+      "fechaCreacion": "2026-11-08T16:40:00Z",
+      "estado": "enviado",
+      "tipoEnvio": "express",
+      "metodoPago": "efectivo",
+      "prioridad": "media",
+      "items": [
+        {
+          "codigoProducto": "PROD-002",
+          "nombre": "Monitor 27\"",
+          "precioUnitario": 600.0,
+          "cantidad": 1
+        },
+        {
+          "codigoProducto": "PROD-004",
+          "nombre": "Mouse inalámbrico",
+          "precioUnitario": 120.0,
+          "cantidad": 2
+        }
+      ]
+    },
+    {
+      "id": "PED-0009",
+      "clienteId": "CLI-009",
+      "fechaCreacion": "2026-11-09T17:25:00Z",
+      "estado": "entregado",
+      "tipoEnvio": "estandar",
+      "metodoPago": "transferencia",
+      "prioridad": "baja",
+      "items": [
+        {
+          "codigoProducto": "PROD-003",
+          "nombre": "Laptop 14\"",
+          "precioUnitario": 1200.0,
+          "cantidad": 1
+        },
+        {
+          "codigoProducto": "PROD-012",
+          "nombre": "Disco SSD 1TB",
+          "precioUnitario": 320.0,
+          "cantidad": 1
+        }
+      ]
+    },
+    {
+      "id": "PED-0010",
+      "clienteId": "CLI-010",
+      "fechaCreacion": "2026-11-10T18:55:00Z",
+      "estado": "cancelado",
+      "tipoEnvio": "retiro",
+      "metodoPago": "tarjeta",
+      "prioridad": "alta",
+      "items": [
+        {
+          "codigoProducto": "PROD-001",
+          "nombre": "Teclado mecánico",
+          "precioUnitario": 250.0,
+          "cantidad": 1
+        },
+        {
+          "codigoProducto": "PROD-005",
+          "nombre": "Auriculares Bluetooth",
+          "precioUnitario": 180.0,
+          "cantidad": 1
+        }
+      ]
+    }
+  ]
+}
