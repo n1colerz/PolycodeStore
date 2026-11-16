@@ -1,0 +1,212 @@
+{
+  "generadoEn": "2026-11-14T20:49:41Z",
+  "repeticiones": 5,
+  "calentamiento": 1,
+  "urls": {
+    "python": "http://127.0.0.1:8001",
+    "go": "http://127.0.0.1:8002",
+    "js": "http://127.0.0.1:8003"
+  },
+  "resultados": [
+    {
+      "lenguaje": "python",
+      "dataset": "pequeno",
+      "pedidos": 10,
+      "tiemposMs": [
+        3.738,
+        3.674,
+        3.316,
+        3.266,
+        4.059
+      ],
+      "mediaMs": 3.611,
+      "medianaMs": 3.674,
+      "minMs": 3.266,
+      "maxMs": 4.059,
+      "exitosos": 10,
+      "fallidos": 0,
+      "montoTotal": 8781.36
+    },
+    {
+      "lenguaje": "go",
+      "dataset": "pequeno",
+      "pedidos": 10,
+      "tiemposMs": [
+        1.533,
+        1.57,
+        1.856,
+        2.264,
+        1.581
+      ],
+      "mediaMs": 1.761,
+      "medianaMs": 1.581,
+      "minMs": 1.533,
+      "maxMs": 2.264,
+      "exitosos": 10,
+      "fallidos": 0,
+      "montoTotal": 8781.36
+    },
+    {
+      "lenguaje": "js",
+      "dataset": "pequeno",
+      "pedidos": 10,
+      "tiemposMs": [
+        2.726,
+        1.968,
+        1.73,
+        1.602,
+        2.077
+      ],
+      "mediaMs": 2.021,
+      "medianaMs": 1.968,
+      "minMs": 1.602,
+      "maxMs": 2.726,
+      "exitosos": 10,
+      "fallidos": 0,
+      "montoTotal": 8781.36
+    },
+    {
+      "lenguaje": "python",
+      "dataset": "mediano",
+      "pedidos": 100,
+      "tiemposMs": [
+        17.373,
+        15.954,
+        16.939,
+        16.387,
+        16.47
+      ],
+      "mediaMs": 16.625,
+      "medianaMs": 16.47,
+      "minMs": 15.954,
+      "maxMs": 17.373,
+      "exitosos": 100,
+      "fallidos": 0,
+      "montoTotal": 194480.92
+    },
+    {
+      "lenguaje": "go",
+      "dataset": "mediano",
+      "pedidos": 100,
+      "tiemposMs": [
+        6.658,
+        7.387,
+        8.034,
+        7.822,
+        7.336
+      ],
+      "mediaMs": 7.447,
+      "medianaMs": 7.387,
+      "minMs": 6.658,
+      "maxMs": 8.034,
+      "exitosos": 100,
+      "fallidos": 0,
+      "montoTotal": 194480.92
+    },
+    {
+      "lenguaje": "js",
+      "dataset": "mediano",
+      "pedidos": 100,
+      "tiemposMs": [
+        5.293,
+        5.619,
+        5.726,
+        5.142,
+        5.599
+      ],
+      "mediaMs": 5.476,
+      "medianaMs": 5.599,
+      "minMs": 5.142,
+      "maxMs": 5.726,
+      "exitosos": 100,
+      "fallidos": 0,
+      "montoTotal": 194480.92
+    },
+    {
+      "lenguaje": "python",
+      "dataset": "grande",
+      "pedidos": 1000,
+      "tiemposMs": [
+        99.573,
+        101.105,
+        106.226,
+        110.093,
+        99.563
+      ],
+      "mediaMs": 103.312,
+      "medianaMs": 101.105,
+      "minMs": 99.563,
+      "maxMs": 110.093,
+      "exitosos": 1000,
+      "fallidos": 0,
+      "montoTotal": 1936126.78
+    },
+    {
+      "lenguaje": "go",
+      "dataset": "grande",
+      "pedidos": 1000,
+      "tiemposMs": [
+        59.684,
+        58.721,
+        60.312,
+        61.912,
+        59.497
+      ],
+      "mediaMs": 60.025,
+      "medianaMs": 59.684,
+      "minMs": 58.721,
+      "maxMs": 61.912,
+      "exitosos": 1000,
+      "fallidos": 0,
+      "montoTotal": 1936126.78
+    },
+    {
+      "lenguaje": "js",
+      "dataset": "grande",
+      "pedidos": 1000,
+      "tiemposMs": [
+        37.73,
+        39.904,
+        36.662,
+        32.234,
+        47.28
+      ],
+      "mediaMs": 38.762,
+      "medianaMs": 37.73,
+      "minMs": 32.234,
+      "maxMs": 47.28,
+      "exitosos": 1000,
+      "fallidos": 0,
+      "montoTotal": 1936126.78
+    }
+  ],
+  "coherencia": [
+    {
+      "dataset": "pequeno",
+      "montoTotal": {
+        "python": 8781.36,
+        "go": 8781.36,
+        "js": 8781.36
+      },
+      "iguales": true
+    },
+    {
+      "dataset": "mediano",
+      "montoTotal": {
+        "python": 194480.92,
+        "go": 194480.92,
+        "js": 194480.92
+      },
+      "iguales": true
+    },
+    {
+      "dataset": "grande",
+      "montoTotal": {
+        "python": 1936126.78,
+        "go": 1936126.78,
+        "js": 1936126.78
+      },
+      "iguales": true
+    }
+  ]
+}

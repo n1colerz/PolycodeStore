@@ -1,0 +1,33 @@
+{
+  "generadoEn": "2026-11-14T20:44:34Z",
+  "criterio": "líneas físicas no vacías y sin comentarios; se excluyen los tests. En Python los docstrings se cuentan como comentarios.",
+  "lenguajes": [
+    {
+      "archivos": 8,
+      "lineasTotales": 1278,
+      "lineasVacias": 203,
+      "lineasComentario": 38,
+      "loc": 1037,
+      "lenguaje": "python",
+      "paradigma": "OOP + funcional"
+    },
+    {
+      "archivos": 10,
+      "lineasTotales": 1873,
+      "lineasVacias": 228,
+      "lineasComentario": 125,
+      "loc": 1520,
+      "lenguaje": "go",
+      "paradigma": "concurrencia + compilado"
+    },
+    {
+      "archivos": 9,
+      "lineasTotales": 1529,
+      "lineasVacias": 187,
+      "lineasComentario": 71,
+      "loc": 1271,
+      "lenguaje": "js",
+      "paradigma": "asincronía + funcional"
+    }
+  ]
+}
