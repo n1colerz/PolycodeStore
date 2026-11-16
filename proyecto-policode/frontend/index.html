@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>proyecto-polycode · Comparativa Python / Go / JS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="cabecera">
+      <div>
+        <h1>proyecto-polycode</h1>
+        <p class="subtitulo">
+          El mismo sistema de pedidos implementado en Python, Go y JavaScript/TypeScript
+        </p>
+      </div>
+      <div class="apis" id="estado-apis" aria-live="polite"></div>
+    </header>
+
+    <nav class="pestanas" role="tablist">
+      <button type="button" class="pestana activa" data-vista="pedidos" role="tab">
+        Pedidos
+      </button>
+      <button type="button" class="pestana" data-vista="nuevo" role="tab">Nuevo pedido</button>
+      <button type="button" class="pestana" data-vista="comparativa" role="tab">Comparativa</button>
+    </nav>
+
+    <main>
+      <!-- Vista 1: lista de pedidos -->
+      <section id="vista-pedidos" class="vista activa">
+        <div class="panel">
+          <h2>Lista de pedidos</h2>
+          <div class="filtros">
+            <label>
+              API
+              <select id="filtro-api"></select>
+            </label>
+            <label>
+              Cliente
+              <select id="filtro-cliente">
+                <option value="">Todos los clientes</option>
+              </select>
+            </label>
+            <label>
+              Estado
+              <select id="filtro-estado">
+                <option value="">Todos los estados</option>
+                <option value="recibido">recibido</option>
+                <option value="en_preparacion">en_preparacion</option>
+                <option value="enviado">enviado</option>
+                <option value="entregado">entregado</option>
+                <option value="cancelado">cancelado</option>
+              </select>
+            </label>
+            <label>
+              Orden
+              <select id="filtro-orden">
+                <option value="fecha">fecha</option>
+                <option value="monto">monto</option>
+                <option value="prioridad">prioridad</option>
+              </select>
+            </label>
+            <button type="button" id="boton-consultar">Consultar</button>
+          </div>
+          <p class="estado" id="estado-pedidos"></p>
+          <div class="tabla-contenedor">
+            <table id="tabla-pedidos">
+              <thead>
+                <tr>
+                  <th>Pedido</th>
+                  <th>Cliente</th>
+                  <th>Fecha</th>
+                  <th>Estado</th>
+                  <th>Envío</th>
+                  <th>Pago</th>
+                  <th>Prioridad</th>
+                  <th class="derecha">Subtotal</th>
+                  <th class="derecha">Descuento</th>
+                  <th class="derecha">IVA</th>
+                  <th class="derecha">Envío</th>
+                  <th class="derecha">Total</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vista 2: formulario de nuevo pedido -->
+      <section id="vista-nuevo" class="vista">
+        <div class="panel">
+          <h2>Nuevo pedido</h2>
+          <p class="ayuda">
+            El mismo pedido se envía a las tres APIs: los errores se muestran lado a lado para
+            comprobar que el contrato es idéntico.
+          </p>
+          <form id="formulario-pedido" novalidate>
+            <div class="rejilla-campos">
+              <label>
+                Id del pedido
+                <input type="text" id="campo-id" placeholder="PED-0001" />
+              </label>
+              <label>
+                Cliente
+                <select id="campo-cliente"></select>
+              </label>
+              <label>
+                Tipo de envío
+                <select id="campo-envio">
+                  <option value="estandar">estandar</option>
+                  <option value="express">express</option>
+                  <option value="retiro">retiro</option>
+                </select>
+              </label>
+              <label>
+                Método de pago
+                <select id="campo-pago">
+                  <option value="efectivo">efectivo</option>
+                  <option value="tarjeta">tarjeta</option>
+                  <option value="transferencia">transferencia</option>
+                </select>
+              </label>
+              <label>
+                Prioridad
+                <select id="campo-prioridad">
+                  <option value="alta">alta</option>
+                  <option value="media">media</option>
+                  <option value="baja">baja</option>
+                </select>
+              </label>
+            </div>
+
+            <h3>Items</h3>
+            <div id="lista-items" class="items"></div>
+            <div class="acciones">
+              <button type="button" id="boton-agregar-item">Agregar item</button>
+              <button type="submit" id="boton-enviar">Enviar a las tres APIs</button>
+            </div>
+            <p class="estado" id="estado-formulario"></p>
+          </form>
+          <div class="resultados-lado-a-lado" id="resultados-nuevo"></div>
+        </div>
+      </section>
+
+      <!-- Vista 3: comparativa -->
+      <section id="vista-comparativa" class="vista">
+        <div class="panel">
+          <h2>Comparativa entre lenguajes</h2>
+          <p class="ayuda">
+            Se envía el mismo lote a las tres APIs con <code>POST /pedidos/lote</code> y se mide el
+            tiempo con <code>performance.now()</code>.
+          </p>
+          <div class="filtros">
+            <label>
+              Dataset
+              <select id="select-dataset">
+                <option value="pequeno">pequeño (10 pedidos)</option>
+                <option value="mediano" selected>mediano (100 pedidos)</option>
+                <option value="grande">grande (1000 pedidos)</option>
+              </select>
+            </label>
+            <label>
+              Repeticiones
+              <input type="number" id="input-repeticiones" value="3" min="1" max="20" />
+            </label>
+            <button type="button" id="boton-comparar">Comparar</button>
+          </div>
+          <p class="estado" id="estado-comparativa"></p>
+
+          <div class="tabla-contenedor">
+            <table id="tabla-comparativa">
+              <thead>
+                <tr>
+                  <th>Lenguaje</th>
+                  <th class="derecha">Tiempo medio (ms)</th>
+                  <th class="derecha">Mediana (ms)</th>
+                  <th class="derecha">Pedidos</th>
+                  <th class="derecha">Monto total</th>
+                  <th class="derecha">LOC</th>
+                  <th>Paradigma principal</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <h3>Gráfico de tiempos</h3>
+          <canvas id="grafico" width="760" height="240" role="img" aria-label="Gráfico de barras"></canvas>
+
+          <h3>Ventajas y limitaciones</h3>
+          <div class="tarjetas" id="tarjetas-lenguajes"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        proyecto-polycode · las tres APIs comparten el contrato de
+        <code>documentos/contratos-api.md</code>. Puertos: 8001 (Python), 8002 (Go), 8003 (JS).
+      </p>
+    </footer>
+
+    <script src="catalogos.js"></script>
+    <script src="datasets.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,385 @@
+/* Frontend comparativo de proyecto-polycode: estilos propios, sin librerías. */
+
+:root {
+  --fondo: #f4f6f8;
+  --panel: #ffffff;
+  --texto: #1f2933;
+  --texto-suave: #5b6770;
+  --borde: #d7dee5;
+  --acento: #2f6f9f;
+  --acento-suave: #e8f1f8;
+  --ok: #2e7d5b;
+  --error: #b23b3b;
+  --sombra: 0 1px 3px rgba(31, 41, 51, 0.12);
+  --radio: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+code {
+  background: #eceff2;
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 0.92em;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+h4 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+  margin: 14px 0 4px;
+}
+
+/* ------------------------------------------------------------- cabecera */
+
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--borde);
+}
+
+.subtitulo {
+  margin: 4px 0 0;
+  color: var(--texto-suave);
+}
+
+.apis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.insignia {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--borde);
+  background: #f0f2f5;
+  color: var(--texto-suave);
+}
+
+.insignia.ok {
+  background: #e6f4ec;
+  border-color: #b9dfc9;
+  color: var(--ok);
+}
+
+.insignia.error {
+  background: #fbeaea;
+  border-color: #eec3c3;
+  color: var(--error);
+}
+
+/* ------------------------------------------------------------- pestañas */
+
+.pestanas {
+  display: flex;
+  gap: 4px;
+  padding: 14px 28px 0;
+}
+
+.pestana {
+  border: 1px solid var(--borde);
+  border-bottom: none;
+  background: #e9edf1;
+  color: var(--texto-suave);
+  padding: 9px 18px;
+  border-radius: var(--radio) var(--radio) 0 0;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.pestana.activa {
+  background: var(--panel);
+  color: var(--texto);
+  font-weight: 600;
+  border-color: var(--borde);
+}
+
+/* --------------------------------------------------------------- paneles */
+
+main {
+  padding: 0 28px 32px;
+}
+
+.vista {
+  display: none;
+}
+
+.vista.activa {
+  display: block;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 0 var(--radio) var(--radio) var(--radio);
+  box-shadow: var(--sombra);
+  padding: 22px 24px;
+}
+
+.ayuda {
+  color: var(--texto-suave);
+  margin-top: -4px;
+}
+
+/* --------------------------------------------------------------- filtros */
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: flex-end;
+  margin-bottom: 14px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+}
+
+select,
+input[type="text"],
+input[type="number"] {
+  padding: 7px 9px;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--texto);
+  font-size: 0.95rem;
+  min-width: 150px;
+}
+
+button {
+  padding: 8px 16px;
+  border: 1px solid var(--acento);
+  background: var(--acento);
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+#boton-agregar-item {
+  background: #fff;
+  color: var(--acento);
+}
+
+/* --------------------------------------------------------------- tablas */
+
+.tabla-contenedor {
+  overflow-x: auto;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #e6eaee;
+  text-align: left;
+  white-space: nowrap;
+}
+
+thead th {
+  background: #eef2f5;
+  color: var(--texto-suave);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  position: sticky;
+  top: 0;
+}
+
+tbody tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+tbody tr:hover {
+  background: var(--acento-suave);
+}
+
+.derecha {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* -------------------------------------------------------------- estado */
+
+.estado {
+  margin: 10px 0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #eef2f5;
+  color: var(--texto-suave);
+  font-size: 0.92rem;
+}
+
+.estado.ok {
+  background: #e6f4ec;
+  color: var(--ok);
+}
+
+.estado.error {
+  background: #fbeaea;
+  color: var(--error);
+}
+
+/* ----------------------------------------------------------- formulario */
+
+.rejilla-campos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  padding: 10px;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: #fafbfc;
+}
+
+.item select {
+  flex: 2;
+}
+
+.item input {
+  width: 110px;
+}
+
+.acciones {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+/* ------------------------------------------------------------- tarjetas */
+
+.resultados-lado-a-lado,
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.tarjeta {
+  background: #fbfcfd;
+  border: 1px solid var(--borde);
+  border-top: 4px solid var(--acento);
+  border-radius: var(--radio);
+  padding: 14px 16px;
+}
+
+.tarjeta h3 {
+  margin: 0 0 6px;
+}
+
+.tarjeta ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.88rem;
+}
+
+.tarjeta ul.limitaciones li {
+  color: var(--texto-suave);
+}
+
+.destacado {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 6px 0;
+}
+
+.destacado.error {
+  color: var(--error);
+}
+
+.mutado,
+.muted {
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+  margin: 2px 0;
+}
+
+canvas {
+  margin-top: 10px;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  max-width: 100%;
+}
+
+footer {
+  padding: 18px 28px 28px;
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .cabecera,
+  .pestanas,
+  main,
+  footer {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
