@@ -100,10 +100,3 @@ proyecto-polycode/
 ├── documentos/       contratos, análisis comparativo, manual técnico, diagramas
 └── evidencias/       capturas y videos
 ```
-
-## Documentos
-
-- [Contrato de la API](documentos/contratos-api.md) — endpoints, errores, CLI, cálculos y decisiones aprobadas.
-- [Análisis comparativo](documentos/analisis-comparativo.md) — clasificación, paradigmas, arquitectura, tipos, concurrencia, resultados, ventajas y limitaciones.
-- [Manual técnico](documentos/manual-tecnico.md) — cómo extender el proyecto y correr cada suite.
-- [Diagramas](documentos/diagramas/diagramas.md) — capas, secuencia del lote, panel comparativo y estados.
