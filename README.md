@@ -1,3 +1,10 @@
+| Integrante | Cuenta/Cuentas |
+|---|---|
+| Cortes Lozano Hugo Said | hugosaid7026-create |
+| Juárez Resendiz Daniela Nicole | n1colerz |
+| Angeles Juarez Valentin | Va1exhh / savarwidell |
+| Barrera López Alejandro | vakdev |
+
 # proyecto-polycode
 
 Sistema académico de gestión de pedidos implementado **tres veces** con las mismas reglas de
@@ -23,7 +30,7 @@ y los **mismos fixtures de prueba** ([`datos/casos_prueba.json`](datos/casos_pru
 | 2 | Completada | Go: `cmd/`, `internal/`, tests y API. |
 | 3 | Completada | JS/TS: `src/`, tests con vitest, CLI y API. |
 | 4 | Completada | Frontend comparativo, benchmark, conteo de LOC y datasets. |
-| 5 | En curso | Análisis comparativo, manual técnico y evidencias (borradores listos para revisión). |
+| 5 | Completada | Análisis comparativo, manual técnico y evidencias. |
 
 ## Requisitos
 
