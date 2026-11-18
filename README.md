@@ -1,3 +1,10 @@
+| Integrante | Cuenta/Cuentas |
+|---|---|
+| Cortes Lozano Hugo Said | hugosaid7026-create |
+| Juárez Resendiz Daniela Nicole | n1colerz |
+| Angeles Juarez Valentin | Va1exhh / savarwidell |
+| Barrera López Alejandro | vakdev |
+
 # proyecto-polycode
 
 Sistema académico de gestión de pedidos implementado **tres veces** con las mismas reglas de
